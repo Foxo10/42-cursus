@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:34:49 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/16 12:45:03 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/22 18:33:53 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ RETURN VALUE
 		loc() with nmemb or size equal to zero.
 */
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	total;
 	void	*result;

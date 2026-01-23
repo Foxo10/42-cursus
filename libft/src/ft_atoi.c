@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 13:55:46 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/16 12:08:19 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:56:40 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,15 @@ static int	ft_isspace(int c)
 		|| c == '\v');
 }
 
-static int	ft_get_sign(char c)
+static int	ft_get_sign(char c, int *i)
 {
 	if (c == '-')
+	{
+		(*i)++;
 		return (-1);
+	}
+	if (c == '+')
+		(*i)++;
 	return (1);
 }
 
@@ -48,10 +53,10 @@ int	ft_atoi(const char *nptr)
 	int	sign;
 	int	result;
 
+	i = 0;
 	while (ft_isspace(nptr[i]))
 		i++;
-	sign = ft_get_sign(nptr[i]);
-	i++;
+	sign = ft_get_sign(nptr[i], &i);
 	result = 0;
 	while (ft_isdigit(nptr[i]))
 	{

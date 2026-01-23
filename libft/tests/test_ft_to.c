@@ -6,61 +6,81 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/15 12:29:27 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/16 14:02:01 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:26:18 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tester.h"
 
-static int	check_and_print_ko(const char *name, int x, int ft, int libc)
+static void	test_toupper(void)
 {
-	if (ft != libc)
+	int		i;
+	int		n_upper;
+	int		tests_upper[] = {'A', 'Z', 'a', 'z', '@', '[', '`', '{', '0', '9',
+				' ', '\n', '\t', '\0', 31, 126, 127, 128, 255, -1};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("toupper");
+	n_upper = (int)(sizeof(tests_upper) / sizeof(tests_upper[0]));
+	i = 0;
+	while (i < n_upper)
 	{
-		printf("KO %s c=%4d -> ft=%d libc=%d\n", name, x, ft, libc);
-		return (1);
+		x = tests_upper[i];
+		ft = ft_toupper(x);
+		ref = toupper(x);
+		ok = (ft == ref);
+		if (x >= 32 && x <= 126)
+			snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		else
+			snprintf(case_name, sizeof(case_name), "Caso 0x%X (%d)",
+				(unsigned int)x, x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
 	}
-	return (0);
+}
+
+static void	test_tolower(void)
+{
+	int		i;
+	int		n_lower;
+	int		tests_lower[] = {'A', 'Z', 'a', 'z', '@', '[', '`', '{', '0', '9',
+				' ', '\n', '\t', '\0', 31, 126, 127, 128, 255, -1};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("tolower");
+	n_lower = (int)(sizeof(tests_lower) / sizeof(tests_lower[0]));
+	i = 0;
+	while (i < n_lower)
+	{
+		x = tests_lower[i];
+		ft = ft_tolower(x);
+		ref = tolower(x);
+		ok = (ft == ref);
+		if (x >= 32 && x <= 126)
+			snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		else
+			snprintf(case_name, sizeof(case_name), "Caso 0x%X (%d)",
+				(unsigned int)x, x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
+	}
+	t_test_end();
 }
 
 void	test_to(void)
 {
-	int	i;
-	int	fails_lower;
-	int	fails_upper;
-	int	tests[] = {'A', 'Z', 'a', 'z', '@', '[', '`', '{', '0', '9', '/', ';',
-			':', '-', '_', ' ', '\n', '\t', '\0', 31, 32, 126, 127, 128, 255};
-	int	n;
-
-	n = (int)(sizeof(tests) / sizeof(tests[0]));
-	fails_lower = 0;
-	printf("\n------ Test tolower ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_lower += check_and_print_ko("tolower", tests[i],
-				ft_tolower(tests[i]), tolower((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_lower == 0)
-		printf("OK: tolower\n");
-	else
-		printf("KO: %d mismatches\n", fails_lower);
-	fails_upper = 0;
-	printf("\n------ Test toupper ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_upper += check_and_print_ko("toupper", tests[i],
-				ft_toupper(tests[i]), toupper((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_upper == 0)
-		printf("OK: toupper\n");
-	else
-		printf("KO: %d mismatches\n", fails_upper);
-	printf("\n");
-	if (fails_upper + fails_lower == 0)
-		printf("OK: all to* tests\n");
-	else
-		printf("KO: %d mismatches total\n", fails_lower + fails_upper);
+	test_tolower();
+	test_toupper();
 }

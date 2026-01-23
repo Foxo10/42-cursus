@@ -6,105 +6,167 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 20:15:47 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/16 14:01:54 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/21 14:03:58 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "tester.h"
 
-static int	same_bool(int ft, int libc)
+static void	test_isalpha(void)
 {
-	if (ft == 0 && libc == 0)
-		return (1);
-	if (ft != 0 && libc != 0)
-		return (1);
-	return (0);
+	int		i;
+	int		n_alpha;
+	int		tests_alpha[] = {'A', 'Z', 'a', 'z', '@', '[', '`', '{', '0', '9',
+				' ', '\n', '\t', 31, 126, 127};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("isalpha");
+	n_alpha = (int)(sizeof(tests_alpha) / sizeof(tests_alpha[0]));
+	i = 0;
+	while (i < n_alpha)
+	{
+		x = tests_alpha[i];
+		ft = ft_isalpha(x);
+		ref = isalpha((unsigned char)x);
+		ok = t_same_bool(ft, ref);
+		snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
+	}
+	t_test_end();
 }
 
-static int	check_and_print_ko(const char *name, int x, int ft, int libc)
+static void	test_isdigit(void)
 {
-	if (!same_bool(ft, libc))
+	int		i;
+	int		n_digit;
+	int		tests_digit[] = {'0', '9', '5', '/', ':', 'A', 'z', ' ', '\n', '\t',
+				31, 126, 127};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("isdigit");
+	n_digit = (int)(sizeof(tests_digit) / sizeof(tests_digit[0]));
+	i = 0;
+	while (i < n_digit)
 	{
-		printf("KO %s c=%4d -> ft=%d libc=%d\n", name, x, ft, libc);
-		return (1);
+		x = tests_digit[i];
+		ft = ft_isdigit(x);
+		ref = isdigit((unsigned char)x);
+		ok = t_same_bool(ft, ref);
+		snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
 	}
-	return (0);
+	t_test_end();
+}
+
+static void	test_isalnum(void)
+{
+	int		i;
+	int		n_alnum;
+	int		tests_alnum[] = {'A', 'Z', 'a', 'z', '0', '9', '@', '[', '`', '{',
+				'/', ':', '_', '+', '\t', '\n', 33, 126, 127};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("isalnum");
+	n_alnum = (int)(sizeof(tests_alnum) / sizeof(tests_alnum[0]));
+	i = 0;
+	while (i < n_alnum)
+	{
+		x = tests_alnum[i];
+		ft = ft_isalnum(x);
+		ref = isalnum((unsigned char)x);
+		ok = t_same_bool(ft, ref);
+		snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
+	}
+	t_test_end();
+}
+
+static void	test_isascii(void)
+{
+	int		i;
+	int		n_ascii;
+	int		tests_ascii[] = {0, 1, 2, 9, 10, 31, 32, 65, 97, 126, 127, -1, -42,
+				128, 129, 255, 256, 1024};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("isascii");
+	n_ascii = (int)(sizeof(tests_ascii) / sizeof(tests_ascii[0]));
+	i = 0;
+	while (i < n_ascii)
+	{
+		x = tests_ascii[i];
+		ft = ft_isascii(x);
+		ref = isascii(x);
+		ok = t_same_bool(ft, ref);
+		snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
+	}
+	t_test_end();
+}
+
+static void	test_isprint(void)
+{
+	int		i;
+	int		n_print;
+	int		tests_print[] = {0, 9, 10, 13, 31, 32, 33, 'A', 'z', '0', '@', '[',
+				'`', '{', 126, 127, 128, 255, -1};
+	char	case_name[32];
+	int		x;
+	int		ft;
+	int		ref;
+	int		ok;
+
+	t_test_begin("isprint");
+	n_print = (int)(sizeof(tests_print) / sizeof(tests_print[0]));
+	i = 0;
+	while (i < n_print)
+	{
+		x = tests_print[i];
+		ft = ft_isprint(x);
+		ref = isprint((unsigned char)x);
+		ok = t_same_bool(ft, ref);
+		snprintf(case_name, sizeof(case_name), "Caso '%c'", (char)x);
+		t_case(ok, case_name);
+		if (!ok)
+			t_print_int_triplet(x, ft, ref);
+		i++;
+	}
+	t_test_end();
 }
 
 void	test_is(void)
 {
-	int	i;
-	int	n;
-	int	fails_alpha;
-	int	fails_digit;
-	int	fails_alnum;
-	int	fails_ascii;
-	int	fails_print;
-	int	tests[] = {'A', 'Z', 'a', 'z', '@', '[', '`', '{', '0', '9', '/', ';',
-			':', '-', '_', ' ', '\n', '\t', '\0', 31, 32, 126, 127, 128, 255,
-			-1, -42};
-
-	n = (int)(sizeof(tests) / sizeof(tests[0]));
-	fails_alpha = 0;
-	fails_digit = 0;
-	fails_alnum = 0;
-	fails_ascii = 0;
-	fails_print = 0;
-	printf("------ Test isalpha ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_alpha += check_and_print_ko("isalpha", tests[i],
-				ft_isalpha(tests[i]), isalpha((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_alpha == 0)
-		printf("OK: isalpha\n");
-	printf("\n------ Test isdigit ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_digit += check_and_print_ko("isdigit", tests[i],
-				ft_isdigit(tests[i]), isdigit((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_digit == 0)
-		printf("OK: isdigit\n");
-	printf("\n------ Test isalnum ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_alnum += check_and_print_ko("isalnum", tests[i],
-				ft_isalnum(tests[i]), isalnum((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_alnum == 0)
-		printf("OK: isalnum\n");
-	printf("\n------ Test isascii ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_ascii += check_and_print_ko("isascii", tests[i],
-				ft_isascii(tests[i]), (tests[i] >= 0 && tests[i] <= 127));
-		i++;
-	}
-	if (fails_ascii == 0)
-		printf("OK: isascii\n");
-	printf("\n------ Test isprint ------\n");
-	i = 0;
-	while (i < n)
-	{
-		fails_print += check_and_print_ko("isprint", tests[i],
-				ft_isprint(tests[i]), isprint((unsigned char)tests[i]));
-		i++;
-	}
-	if (fails_print == 0)
-		printf("OK: isprint\n");
-	printf("\n");
-	if (fails_alpha + fails_digit + fails_alnum + fails_ascii
-		+ fails_print == 0)
-		printf("OK: all is* tests\n");
-	else
-		printf("KO: %d mismatches total\n", fails_alpha + fails_digit
-			+ fails_alnum + fails_ascii + fails_print);
+	test_isalpha();
+	test_isdigit();
+	test_isalnum();
+	test_isascii();
+	test_isprint();
 }
