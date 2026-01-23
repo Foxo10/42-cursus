@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/16 12:34:49 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/22 18:33:53 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/23 18:16:33 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*result;
 
 	if (nmemb == 0 || size == 0)
-		return (NULL);
+		return (malloc(0));
 	total = nmemb * size;
 	result = malloc(total);
 	if (result != NULL)

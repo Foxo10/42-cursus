@@ -12,13 +12,13 @@
     • bzero ✅
     • memset ✅
     • memcpy ✅
-    • memmove ✅
+    • memmove 
     • memchr ✅
     • memcmp ✅
 • str
     • strlen ✅
     • strlcpy ✅
-    • strlcat ✅
+    • strlcat 
     • strncmp ✅
     • strchr ✅
     • strrchr ✅

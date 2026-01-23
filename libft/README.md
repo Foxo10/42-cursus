@@ -5,15 +5,12 @@ make so
 
 cd ../libft-unit-tests
 make f
-
                       First part
 .-"-.     .-"-.     .-"-.     .-"-.     .-"-.     .-"-.
      "-.-"     "-.-"     "-.-"     "-.-"     "-.-"    
 ft_memset:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_bzero:      [OK] [OK] [OK] [OK] 
-ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [CRASH] 
-[crash]: your memcpy does not behave well with NULL as both params with size
-
+ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_memmove:    [FAILED] [CRASH] [FAILED] [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 [fail]: your memmove does not work with basic input
 [crash]: your memmove's return is false/does not work with basic input
@@ -32,20 +29,14 @@ ft_toupper:    [OK]
 ft_tolower:    [OK] 
 ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [FAILED] [OK] [OK] [FAILED] [OK] [OK] [OK] [OK] 
-[fail]: your strncmp does not cast in unsigned char the diff
-[fail]: your strncmp does not work with non ascii chars
-
+ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strlcat:    [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [NO CRASH] [OK] [OK] 
+ft_strlcat:    [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 [fail]: your strlcat does not work with basic input
-[no crash]: your strlcat does not segfault when null parameter is sent
 
 ft_strnstr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_calloc:     [OK] [OK] [OK] [FAILED] [OK] 
-[fail]: your calloc don't work with 0 size
-
+ft_calloc:     [OK] [OK] [OK] [OK] [OK] 
 ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
 
 In this part, you can choose to protect your function or not to,
@@ -84,8 +75,22 @@ ft_lstclear:   [OK] [OK] [OK] [🛡 ]
 ft_lstiter:    [OK] [🛡 ] 
 ft_lstmap:     [OK] [🛡 ] 
 ft_striteri:   [OK] [OK] [🛡 ] 
+See result.log for more informations !
 
--------------------------------------------------------------
++---------------------+
+|   COMPILE LIBRARY   |
++---------------------+
+Library compiled successfully!
++---------------------+
+|   CHECK SYMBOLS     |
++---------------------+
+All required functions found!
+No forbidden functions!
+No global variables!
++-------------------+
+|   COMPILE TESTS   |
++-------------------+
+Tests compiled successfully!
 +-----------+
 |   TESTS   |
 +-----------+
@@ -108,7 +113,7 @@ ft_striteri:   [OK] [OK] [🛡 ]
 --- memset ---
 [OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
 --- memcpy ---
-[OK][OK][SEGFAULT][OK][OK]
+[OK][OK][OK][OK][OK][OK][OK]
 --- memmove ---
 [OK][KO][OK][OK][OK][KO][OK][KO][SEGFAULT][OK][OK]
 --- memchr ---
@@ -132,7 +137,7 @@ ft_striteri:   [OK] [OK] [🛡 ]
 --- strlcpy ---
 [OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
 --- strlcat ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][KO][KO][OK][OK][OK][OK][OK]
+[OK][OK][OK][OK][OK][OK][KO][OK][KO][OK][OK][OK][KO][OK][OK][OK]
 --- strnstr ---
 [OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
 --- substr ---
@@ -159,24 +164,43 @@ ft_striteri:   [OK] [OK] [🛡 ]
 [OK][OK][OK][OK][OK][OK]
 --- FINAL RESULT ---
 Errors detected; for detailed error messages, see ~/42zeus/errors.log
-
---- memcpy ---
-
-A function call caused a segmentation fault
-
---- memmove ---
-
-ft_memmove(0x63e9e0623020, "HOLA MUNDO" (0x63e9e061d3f4), 11) returned an incorrect string
-- (expected: "HOLA MUNDO", returned: "")
-ft_memmove(0x63e9e0623023, "MULAULANDO" (0x63e9e0623020), 4) returned an incorrect string
-- (expected: "MULMULANDO", returned: "MULAULANDO")
-ft_memmove(0x63e9e0623027, "MULAULANUL" (0x63e9e0623020), 3) returned an incorrect string
-- (expected: "MULMULAMUL", returned: "MULAULANUL")
-A function call caused a segmentation fault
-
---- strlcat ---
-
-ft_strlcat("", "MUNDO", 4) returned an incorrect string
-- (expected: "MUN", returned: "")
-ft_strlcat("HOLA", " MUNDO", 3) returned an incorrect value
-- (expected: 9, returned: 6)
++-----------------------+
+|   libft: BONUS PART   |
++-----------------------+
++-----------------------------+
+|   COMPILE LIBRARY (BONUS)   |
++-----------------------------+
+Library compiled successfully!
++-----------------------------+
+|   CHECK SYMBOLS (BONUS)     |
++-----------------------------+
+All required functions found!
+No forbidden functions!
+No global variables!
++---------------------------+
+|   COMPILE TESTS (BONUS)   |
++---------------------------+
+Tests compiled successfully!
++-------------------+
+|   TESTS (BONUS)   |
++-------------------+
+--- lstnew ---
+[OK][OK][OK][OK][OK][OK][OK][OK][OK]
+--- lstadd_front ---
+[OK][OK][OK][OK]
+--- lstsize ---
+[OK][OK][OK]
+--- lstlast ---
+[OK][OK][OK]
+--- lstadd_back ---
+[OK][OK][OK][OK]
+--- lstdelone ---
+[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
+--- lstclear ---
+[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
+--- lstiter ---
+[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
+--- lstmap ---
+[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
+--- FINAL RESULT ---
+All tests OK!

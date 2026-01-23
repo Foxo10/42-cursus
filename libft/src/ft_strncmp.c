@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:41:23 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/22 18:52:50 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/23 18:29:34 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	{
 		if (s1[i] != s2[i])
 		{
-			return (s1[i] - s2[i]);
+			return ((unsigned char)s1[i] - (unsigned)s2[i]);
 		}
 		i++;
 	}
