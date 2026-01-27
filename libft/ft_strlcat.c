@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 16:23:54 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/23 19:34:29 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/27 13:35:49 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,13 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	size_t	i;
 	size_t	srclen;
 
-	if (dstsize == 0)
-		return (0);
 	srclen = ft_strlen(src);
-	dstlen = ft_strlen(dst);
-	if (dstsize <= dstlen)
+	if (dstsize == 0)
+		return (srclen);
+	dstlen = 0;
+	while (dstlen < dstsize && dst[dstlen] != '\0')
+		dstlen++;
+	if (dstlen == dstsize)
 		return (dstsize + srclen);
 	i = 0;
 	while (src[i] && i + dstlen < dstsize - 1)
@@ -72,20 +74,5 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 		i++;
 	}
 	dst[dstlen + i] = '\0';
-	return (dstlen + i);
+	return (dstlen + srclen);
 }
-
-/*
-#include <bsd/string.h>
-
-int	main(void)
-{
-	char		destination[20] = "Hello, ";
-	const char	*source = "World!";
-	size_t		total_length;
-
-	total_length = strlcat(destination, source, sizeof(destination));
-	printf("Concatenated string: %s\n", destination);
-	printf("Total length: %zu\n", total_length);
-	return (0);
-}*/

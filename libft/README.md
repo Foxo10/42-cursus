@@ -1,206 +1,78 @@
-cd ~/cursus/libft
+*Este proyecto ha sido creado como parte del currículo de 42 por odiez-gu.*
+
+# Libft
+
+## Descripción
+**Libft** es una librería en C que reimplementa un conjunto de funciones clásicas de la libc y añade funciones extra (manejo de strings, memoria, conversiones y descriptor de archivos).  
+El objetivo es comprender en profundidad el comportamiento de estas funciones, practicar punteros/memoria dinámica y construir una base reutilizable para proyectos posteriores.
+
+## Instrucciones
+
+### Compilación
+- Compilar la parte obligatoria y la parte bonus:
+```bash
+make
+```
+- Limpiar:
+```bash
+make clean
 make fclean
-make bonus
-make so
+make re
+```
+Al compilar se genera libft.a en la raíz del repositorio.
 
-cd ../libft-unit-tests
-make f
-                      First part
-.-"-.     .-"-.     .-"-.     .-"-.     .-"-.     .-"-.
-     "-.-"     "-.-"     "-.-"     "-.-"     "-.-"    
-ft_memset:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_bzero:      [OK] [OK] [OK] [OK] 
-ft_memcpy:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_memmove:    [FAILED] [CRASH] [FAILED] [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-[fail]: your memmove does not work with basic input
-[crash]: your memmove's return is false/does not work with basic input
-[fail]: your memmove does not work with \0 and others unsigned char codes
-[fail]: your memmove does not support the overlap (test 1)
+### Uso en otros proyectos
 
-ft_memchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_memcmp:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strlen:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_isalpha:    [OK] 
-ft_isdigit:    [OK] 
-ft_isalnum:    [OK] 
-ft_isascii:    [OK] 
-ft_isprint:    [OK] 
-ft_toupper:    [OK] 
-ft_tolower:    [OK] 
-ft_strchr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strrchr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strncmp:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strlcpy:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strlcat:    [OK] [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-[fail]: your strlcat does not work with basic input
+```#include "libft.h"```
 
-ft_strnstr:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_atoi:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_calloc:     [OK] [OK] [OK] [OK] [OK] 
-ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
+- Ejemplo de compilación:
+```bash
+cc -Wall -Wextra -Werror main.c libft.a -o libft
+```
 
-In this part, you can choose to protect your function or not to,
-a color code will tell you if your function is protected/not BUT stay coherent !
-[🛡 ] --> protected
-[💥 ] --> not protected
-                     Second part
- __)(__  __)(__  __)(__  __)(__  __)(__  __)(__  __)(__  __)
-(______)(______)(______)(______)(______)(______)(______)(___
+## Descripción detallada
+La librería está organizada en 3 bloques (parte 1, parte 2 y bonus). En este caso, el bonus es una sección mandatoria del proyecto. La implementación busca reproducir el comportamiento descrito en las páginas del manual (man) de cada función, con el prefijo ft_.
 
-ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [🛡 ] [OK] 
-ft_strjoin:    [OK] [OK] [OK] [OK] [OK] [🛡 ] 
-ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [🛡 ] 
-ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [🛡 ] 
-ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strmapi:    [OK] [OK] [OK] [OK] [OK] [🛡 ] 
-ft_putchar_fd: [OK] [OK] 
-ft_putstr_fd:  [OK] [OK] [🛡 ] 
-ft_putendl_fd: [OK] [OK] [🛡 ] 
-ft_putnbr_fd:  [OK] [OK] [OK] [OK] [OK] 
+### Funciones de libc (reimplementación)
 
- /~~~\/~~\/~~~\/~~~\/~~\/~~~\                    /~~~\/~~\/~~~\/~~~\/~~\/~~~\
- | /\/ /\/ /\ || /\/ /\/ /\ |                    | /\ \/\ \/\ || /\ \/\ \/\ |
-  \ \/ /\/ /\/ /\ \/ /\/ /\/ /     Bonus part     \ \/\ \/\ \/ /\ \/\ \/\ \/ /
-   \ \/\ \/\ \/  \ \/\ \/\ \/                      \/ /\/ /\/ /  \/ /\/ /\/ /
-,_/\ \/\ \/\ \__/\ \/\ \/\ \______________________/ /\/ /\/ /\__/ /\/ /\/ /\_,
-(__/\__/\__/\____/\__/\__/\________________________/\__/\__/\____/\__/\__/\__)
+*Clasificación de caracteres*
+* ft_isalpha, ft_isdigit, ft_isalnum, ft_isascii, ft_isprint
 
-ft_lstnew:     [OK] [OK] [OK] [OK] 
-ft_lstadd_front: [OK] [OK] [OK] 
-ft_lstsize:    [OK] [OK] 
-ft_lstlast:    [OK] [OK] 
-ft_lstadd_back:[OK] [OK] [OK] 
-ft_lstdelone:  [OK] [🛡 ] 
-ft_lstclear:   [OK] [OK] [OK] [🛡 ] 
-ft_lstiter:    [OK] [🛡 ] 
-ft_lstmap:     [OK] [🛡 ] 
-ft_striteri:   [OK] [OK] [🛡 ] 
-See result.log for more informations !
+*Conversión de caracteres*
+* ft_toupper, ft_tolower
 
-+---------------------+
-|   COMPILE LIBRARY   |
-+---------------------+
-Library compiled successfully!
-+---------------------+
-|   CHECK SYMBOLS     |
-+---------------------+
-All required functions found!
-No forbidden functions!
-No global variables!
-+-------------------+
-|   COMPILE TESTS   |
-+-------------------+
-Tests compiled successfully!
-+-----------+
-|   TESTS   |
-+-----------+
---- isalpha ---
-[OK][OK][OK][OK][OK][OK]
---- isdigit ---
-[OK][OK][OK][OK]
---- isalnum ---
-[OK][OK][OK][OK][OK]
---- isascii ---
-[OK][OK][OK][OK][OK]
---- isprint ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- tolower ---
-[OK][OK][OK][OK][OK][OK][OK]
---- toupper ---
-[OK][OK][OK][OK][OK][OK][OK]
---- bzero ---
-[OK][OK]
---- memset ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- memcpy ---
-[OK][OK][OK][OK][OK][OK][OK]
---- memmove ---
-[OK][KO][OK][OK][OK][KO][OK][KO][SEGFAULT][OK][OK]
---- memchr ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- memcmp ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- atoi ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- calloc ---
-[OK][OK][OK][OK]
---- strlen ---
-[OK][OK][OK][OK]
---- strchr ---
-[OK][OK][OK][OK][OK][OK][OK]
---- strrchr ---
-[OK][OK][OK][OK][OK][OK][OK]
---- strncmp ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- strdup ---
-[OK][OK][OK][OK][OK][OK]
---- strlcpy ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- strlcat ---
-[OK][OK][OK][OK][OK][OK][KO][OK][KO][OK][OK][OK][KO][OK][OK][OK]
---- strnstr ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- substr ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- strjoin ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- strtrim ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- split ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- itoa ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- strmapi ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- striteri ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- putchar_fd ---
-[OK][OK][OK]
---- putstr_fd ---
-[OK][OK][OK]
---- putendl_fd ---
-[OK][OK][OK]
---- putnbr_fd ---
-[OK][OK][OK][OK][OK][OK]
---- FINAL RESULT ---
-Errors detected; for detailed error messages, see ~/42zeus/errors.log
-+-----------------------+
-|   libft: BONUS PART   |
-+-----------------------+
-+-----------------------------+
-|   COMPILE LIBRARY (BONUS)   |
-+-----------------------------+
-Library compiled successfully!
-+-----------------------------+
-|   CHECK SYMBOLS (BONUS)     |
-+-----------------------------+
-All required functions found!
-No forbidden functions!
-No global variables!
-+---------------------------+
-|   COMPILE TESTS (BONUS)   |
-+---------------------------+
-Tests compiled successfully!
-+-------------------+
-|   TESTS (BONUS)   |
-+-------------------+
---- lstnew ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- lstadd_front ---
-[OK][OK][OK][OK]
---- lstsize ---
-[OK][OK][OK]
---- lstlast ---
-[OK][OK][OK]
---- lstadd_back ---
-[OK][OK][OK][OK]
---- lstdelone ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- lstclear ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- lstiter ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- lstmap ---
-[OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK][OK]
---- FINAL RESULT ---
-All tests OK!
+*Strings*
+* ft_strlen, ft_strchr, ft_strrchr, ft_strncmp, ft_strnstr, ft_strlcpy, ft_strlcat
+
+*Memoria*
+* ft_memset, ft_bzero, ft_memcpy, ft_memmove, ft_memchr, ft_memcmp
+
+*Conversión*
+* ft_atoi
+
+*Asignación dinámica*
+* ft_calloc, ft_strdup
+
+### Funciones adicionales
+Funciones útiles para trabajar con strings y salida por descriptor de archivo:
+* ft_substr, ft_strjoin, ft_strtrim, ft_split
+* ft_itoa
+* ft_strmapi, ft_striteri
+* ft_putchar_fd, ft_putstr_fd, ft_putendl_fd, ft_putnbr_fd
+
+### Listas enlazadas (t_list)
+Incluye la estructura t_list y funciones para crear, iterar, modificar y liberar listas enlazadas:
+* ft_lstnew, ft_lstadd_front, ft_lstsize, ft_lstlast, ft_lstadd_back
+* ft_lstdelone, ft_lstclear, ft_lstiter, ft_lstmap
+
+## Recursos
+* Linux man pages (https://linux.die.net/man/)
+* C Programming Tutorials (Portfolio Courses)
+* Short introduction to linked lists in C (CodeVaul)
+* Repositorio propio de la piscina (Foxo10/42-igerilekua)
+
+### Uso de IA
+La IA se ha utilizado como apoyo de aprendizaje, principalmente para:
+* Aclarar el comportamiento esperado y casos límite de funciones tipo libc.
+* Revisar ideas de diseño para estructurar una librería de C.
+* Sugerir estrategias de depuración y testeo (segfaults, leaks, uso de herramientas, etc.).
