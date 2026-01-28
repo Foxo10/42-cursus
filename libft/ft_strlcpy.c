@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:50:15 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/15 13:24:05 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:22:27 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	count = ft_strlen(src);
 	if (dstsize == 0)
-	{
 		return (count);
-	}
 	while (src[i] && i < (dstsize - 1))
 	{
 		i[dst] = i[src];

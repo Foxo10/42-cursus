@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:22:31 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/27 14:19:09 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:34:22 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	tmp = ft_lstlast(*lst);
 	tmp->next = new;
+	new->next = NULL;
 }

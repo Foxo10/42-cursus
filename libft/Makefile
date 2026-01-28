@@ -6,7 +6,7 @@
 #    By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/14 19:42:00 by odiez-gu          #+#    #+#              #
-#    Updated: 2026/01/27 19:10:10 by odiez-gu         ###   ########.fr        #
+#    Updated: 2026/01/27 20:39:01 by odiez-gu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,10 +68,7 @@ OBJ_B = $(SRC_B:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ_M)
-	ar rcs $(NAME) $(OBJ_M)
-
-bonus: $(OBJ_M) $(OBJ_B)
+$(NAME): $(OBJ_M) $(OBJ_B)
 	ar rcs $(NAME) $(OBJ_M) $(OBJ_B)
 
 %.o: %.c $(HDR)

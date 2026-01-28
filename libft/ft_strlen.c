@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:00:15 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/15 13:24:10 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/28 10:23:44 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ size_t	ft_strlen(const char *s)
 	size_t	n;
 
 	n = 0;
-	while (*s)
-	{
+	while (s[n])
 		n++;
-		s++;
-	}
 	return (n);
 }
