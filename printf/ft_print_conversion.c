@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 17:40:22 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/29 18:48:17 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:24:16 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	ft_print_c(int c)
 
 int	ft_print_str(char *str)
 {
+	if (str == NULL)
+	{
+		ft_putstr_fd("(null)", 1);
+		return (ft_strlen("(null)"));
+	}
 	ft_putstr_fd(str, 1);
 	return (ft_strlen(str));
 }

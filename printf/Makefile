@@ -6,7 +6,7 @@
 #    By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 15:10:53 by odiez-gu          #+#    #+#              #
-#    Updated: 2026/01/29 17:09:06 by odiez-gu         ###   ########.fr        #
+#    Updated: 2026/01/29 19:32:29 by odiez-gu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,7 @@ HDR = printf.h
 
 SRC= ft_printf.c
 
-
 OBJ = $(SRC:.c=.o)
-
 
 all: $(NAME)
 

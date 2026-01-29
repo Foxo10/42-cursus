@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/29 15:24:02 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/29 18:48:52 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/29 19:29:42 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,42 @@ int	ft_printf(char const *format, ...)
 
 int	main(void)
 {
-	int	result;
+	int		result_ft;
+	int		result_og;
+	char	*null_str;
 
-	result = ft_printf("hello my name is Laura and i'm 23 years old\n");
-	printf("ft_printf -> %d \n", result);
-	result = printf("hello my name is Laura and i'm 23 years old\n");
-	printf("printf -> %d \n", result);
-	result = ft_printf("hello my name is %s\n", "laura");
-	printf("ft_printf -> %d \n", result);
-	result = printf("hello my name is %s\n", "laura");
-	printf("printf -> %d \n", result);
-	result = ft_printf("i'm %d years old\n", -2030);
-	printf("ft_printf -> %d \n", result);
-	result = printf("i'm %d years old\n", -2030);
-	printf("printf -> %d \n", result);
-	result = ft_printf("i'm %d years old\n", 12345689);
-	printf("ft_printf -> %d \n", result);
-	result = printf("i'm %d years old\n", 12345689);
-	printf("printf -> %d \n", result);
+	printf("\n========== NO %% ==========\n");
+	result_ft = ft_printf("ft: hello my name is Laura and i'm 23 years old\n");
+	printf("ft_printf -> %d \n", result_ft);
+	result_og = printf("pf: hello my name is Laura and i'm 23 years old\n");
+	printf("printf -> %d \n", result_og);
+	printf("\n========== %%c ==========\n");
+	result_ft = ft_printf("ft: char = [%c]\n", 'A');
+	printf("ft_printf -> %d \n", result_ft);
+	result_og = printf("pf: char = [%c]\n", 'A');
+	printf("printf -> %d \n", result_og);
+	result_ft = ft_printf("ft: char = [%c]\n", '\0');
+	printf("ft_printf -> %d \n", result_ft);
+	result_og = printf("pf: char = [%c]\n", '\0');
+	printf("printf -> %d \n", result_og);
+	printf("\n========== %%s ==========\n");
+	result_ft = ft_printf("ft: str = [%s]\n", "laura");
+	printf("ft_printf  -> %d \n", result_ft);
+	result_og = printf("pf: str = [%s]\n", "laura");
+	printf("printf -> %d \n", result_og);
+	result_ft = ft_printf("ft: empty_str = [%s]\n", "");
+	printf("ft_printf  -> %d \n", result_ft);
+	result_og = printf("pf: empty_str = [%s]\n", "");
+	printf("printf -> %d \n", result_og);
+	null_str = NULL;
+	result_ft = ft_printf("ft: null_str = [%s]\n", null_str);
+	printf("ft_printf  -> %d \n", result_ft);
+	result_og = printf("pf: null_str = [%s]\n", null_str);
+	printf("printf -> %d \n", result_og);
+	printf("\n========== %%d ==========\n");
+	result_ft = ft_printf("ft: d1=%d d2=%d d3=%d\n", -2030, 123456789, 0);
+	printf("ft_printf -> %d\n", result_ft);
+	result_og = printf("pf: d1=%d d2=%d d3=%d\n", -2030, 123456789, 0);
+	printf("printf    -> %d\n", result_og);
 	return (0);
 }
