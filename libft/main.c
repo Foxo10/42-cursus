@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 16:09:39 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/01/27 20:46:27 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/01/28 11:15:29 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -526,6 +526,7 @@ void	ft_test_lst(void)
 		ft_lstadd_front(&lst, ft_lstnew(strdup("B")));
 		ft_lstadd_front(&lst, ft_lstnew(strdup("C")));
 		printf("[CASE] size(3 nodes) = %d (expected 3)\n", ft_lstsize(lst));
+		print_list_str(lst);
 		manual_clear(&lst);
 	}
 }

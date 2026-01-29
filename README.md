@@ -11,15 +11,11 @@ Repositorio personal donde voy subiendo mi trabajo durante el **cursus de 42**: 
 | Círculo / Rank | Proyecto | Estado | Carpeta | Notas |
 |---|---|---:|---|---|
 | Rank 0 | libft | 🟢 | `libft/` | base de C + tester |
-| Rank 1 | ft_printf | 🔴 | `ft_printf/` | |
+| Rank 1 | ft_printf | 🟡 | `ft_printf/` | |
 | Rank 1 | get_next_line | 🔴 | `get_next_line/` | |
+| Rank 1 | push_swap | 🔴 | `push_swap/` | |
 | Rank 2 | born2beroot | 🔴 | `born2beroot/` | |
-| Rank 2 | push_swap | 🔴 | `push_swap/` | |
-| Rank 2 | minitalk | 🔴 | `minitalk/` | |
-| Rank 2 | so_long | 🔴 | `so_long/` | |
-| Rank 3 | philosophers | 🔴 | `philosophers/` | |
-| Rank 3 | minishell | 🔴 | `minishell/` | |
-| Rank 4+ | cub3d / cpp / … | 🔴 | `...` | |
+
 
 **Leyenda:** 🟢 terminado · 🟡 en progreso · 🔴 pendiente · ⚫ pausado
 
