@@ -6,7 +6,7 @@
 #    By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/29 15:10:53 by odiez-gu          #+#    #+#              #
-#    Updated: 2026/01/29 19:32:29 by odiez-gu         ###   ########.fr        #
+#    Updated: 2026/01/30 19:26:07 by odiez-gu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,9 @@ CFLAGS = -Wall -Wextra -Werror -g
 
 HDR = printf.h
 
-SRC= ft_printf.c
+SRC= ft_printf.c \
+ft_printf_conversion.c \
+ft_printf_conversion.c
 
 OBJ = $(SRC:.c=.o)
 
