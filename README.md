@@ -12,7 +12,7 @@ Repositorio personal donde voy subiendo mi trabajo durante el **cursus de 42**: 
 |---|---|---:|---|---|
 | Rank 0 | libft | 🟢 | `libft/` | base de C + tester |
 | Rank 1 | ft_printf | 🟡 | `ft_printf/` | |
-| Rank 1 | get_next_line | 🔴 | `get_next_line/` | |
+| Rank 1 | get_next_line | 🟡 | `get_next_line/` | |
 | Rank 1 | push_swap | 🔴 | `push_swap/` | |
 | Rank 2 | born2beroot | 🔴 | `born2beroot/` | |
 
