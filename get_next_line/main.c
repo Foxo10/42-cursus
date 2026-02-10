@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 16:29:16 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/02/04 13:24:50 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/02/05 15:44:44 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,28 +27,15 @@ static void	read_file(const char *path)
 	}
 	printf("\n===== FILE: %s =====\n", path);
 	line = get_next_line(fd);
-	while (line != NULL)
+	while (1)
 	{
+		line = get_next_line(fd);
+		if (line == NULL)
+			break ;
 		printf("%s", line);
 		free(line);
-		line = get_next_line(fd);
 	}
 	close(fd);
-}
-
-static void	read_stdin(void)
-{
-	char	*line;
-
-	printf("\n===== STDIN (fd=0) =====\n");
-	printf("Escribe líneas y pulsa Enter. Para terminar: Ctrl+D\n");
-	line = get_next_line(0);
-	while (line != NULL)
-	{
-		printf("[stdin] %s", line);
-		free(line);
-		line = get_next_line(0);
-	}
 }
 
 int	main(void)
@@ -58,6 +45,5 @@ int	main(void)
 	// read_file("file_tests/una_linea_2.txt");
 	// read_file("file_tests/saltos.txt");
 	read_file("file_tests/lineas.txt");
-	read_stdin();
 	return (0);
 }

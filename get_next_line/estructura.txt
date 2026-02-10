@@ -1,0 +1,44 @@
+// 0. Inicialización Estática
+ESTÁTICO cola_stash = {NULL, NULL}  // Mantiene front y rear entre llamadas
+
+// 1. Validaciones de entrada
+SI fd < 0 O BUFFER_SIZE <= 0 O lectura_fallida(fd)
+    LIMPIAR_COLA(cola_stash)
+    RETORNAR NULL
+
+// 2. Bucle de Lectura y Almacenamiento
+MIENTRAS NO_HAY_NEWLINE(cola_stash.rear) Y (bytes = LEER(fd, buffer)) > 0
+    NUEVO_NODO = CREAR_NODO(buffer, bytes)
+    SI cola_stash.front ES NULL
+        cola_stash.front = NUEVO_NODO
+        cola_stash.rear = NUEVO_NODO
+    SINO
+        cola_stash.rear.next = NUEVO_NODO
+        cola_stash.rear = NUEVO_NODO
+    FIN SI
+FIN MIENTRAS
+
+SI cola_stash.front ES NULL // EOF y nada en el stash
+    RETORNAR NULL
+
+// 3. Generar la línea a devolver
+LONGITUD = CALCULAR_HASTA_NEWLINE(cola_stash.front)
+LINEA = MALLOC(LONGITUD + 1)
+COPIAR_DESDE_COLA(cola_stash.front, LINEA, LONGITUD)
+
+// 4. Reconstrucción/Limpieza de la cola (Sobrante)
+ULTIMO_CONTENIDO = cola_stash.rear.content
+SOBRANTE = ENCONTRAR_TEXTO_TRAS_NEWLINE(ULTIMO_CONTENIDO)
+
+SI SOBRANTE existe
+    NUEVO_NODO = CREAR_NODO(SOBRANTE)
+    LIBERAR_COLA_COMPLETA(cola_stash)
+    cola_stash.front = NUEVO_NODO
+    cola_stash.rear = NUEVO_NODO
+SINO
+    LIBERAR_COLA_COMPLETA(cola_stash)
+    cola_stash.front = NULL
+    cola_stash.rear = NULL
+FIN SI
+
+RETORNAR LINEA
