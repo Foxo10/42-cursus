@@ -11,7 +11,7 @@ Repositorio personal donde voy subiendo mi trabajo durante el **cursus de 42**: 
 | Círculo / Rank | Proyecto | Estado | Carpeta | Notas |
 |---|---|---:|---|---|
 | Rank 0 | libft | 🟢 | `libft/` | base de C + tester |
-| Rank 1 | ft_printf | 🟡 | `ft_printf/` | |
+| Rank 1 | ft_printf | 🟢 | `ft_printf/` | librería printf |
 | Rank 1 | get_next_line | 🟡 | `get_next_line/` | |
 | Rank 1 | push_swap | 🔴 | `push_swap/` | |
 | Rank 2 | born2beroot | 🔴 | `born2beroot/` | |
@@ -28,8 +28,8 @@ Repositorio personal donde voy subiendo mi trabajo durante el **cursus de 42**: 
 ├── libft/                 # Rank 0
 ├── ft_printf/             # Rank 1
 ├── get_next_line/         # Rank 1
-├── push_swap/             # Rank 2
-├── born2beroot/           # Rank 3
+├── push_swap/             # Rank 1
+├── born2beroot/           # Rank 2
 ├── notes/                 # apuntes personales (C, Git, Makefile, etc.)
 ├── scripts/               # scripts útiles (build, leak-check, etc.)
 └── README.md
