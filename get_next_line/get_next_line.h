@@ -6,7 +6,7 @@
 /*   By: odiez-gu <odiez-gu@student.42urduliz.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/03 15:38:01 by odiez-gu          #+#    #+#             */
-/*   Updated: 2026/02/10 17:52:45 by odiez-gu         ###   ########.fr       */
+/*   Updated: 2026/02/11 14:51:26 by odiez-gu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void				rebuild_stash(t_queue *queue);
 int					found_newline(t_buffer *last_node);
 size_t				count_to_newline(t_queue *queue);
 t_buffer			*ft_create_node(char *buffer, int bytes_read);
+t_buffer			*get_remains(t_buffer *rear);
+void				free_stash(t_buffer *front);
 
 #endif
